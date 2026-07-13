@@ -1,0 +1,375 @@
+{%- style -%}
+  .counter-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .counter-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .adv-counter__container {
+    max-width: {{ section.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .adv-counter__header {
+    text-align: {{ section.settings.heading_alignment }};
+    margin-bottom: 4rem;
+  }
+
+  .adv-counter__header h2 {
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1rem;
+  }
+
+  .adv-counter__grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-counter__grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+    }
+  }
+
+  .adv-counter__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .adv-counter__number-wrapper {
+    font-size: {{ section.settings.number_size }}rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .adv-counter__label {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .adv-counter__subtext {
+    font-size: 1.4rem;
+    opacity: 0.8;
+    margin: 0;
+  }
+{%- endstyle -%}
+
+<div class="counter-section-{{ section.id }} adv-counter">
+  <div class="adv-counter__container">
+    
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="adv-counter__header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="{{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <div class="adv-counter__subtitle">{{ section.settings.subtitle }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="adv-counter__grid">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'counter' -%}
+            <div class="adv-counter__item" {{ block.shopify_attributes }}>
+              <div class="adv-counter__number-wrapper">
+                {%- if block.settings.prefix != blank -%}
+                  <span class="adv-counter__prefix">{{ block.settings.prefix }}</span>
+                {%- endif -%}
+                
+                <span class="adv-counter__number" 
+                      data-target="{{ block.settings.target_number }}" 
+                      data-duration="{{ section.settings.animation_duration }}">0</span>
+                
+                {%- if block.settings.suffix != blank -%}
+                  <span class="adv-counter__suffix">{{ block.settings.suffix }}</span>
+                {%- endif -%}
+              </div>
+              
+              {%- if block.settings.label != blank -%}
+                <h3 class="adv-counter__label">{{ block.settings.label | escape }}</h3>
+              {%- endif -%}
+              
+              {%- if block.settings.subtext != blank -%}
+                <p class="adv-counter__subtext">{{ block.settings.subtext | escape }}</p>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const initCounters = () => {
+      const counters = document.querySelectorAll('.counter-section-{{ section.id }} .adv-counter__number');
+      
+      const animateCounter = (counter) => {
+        const target = parseInt(counter.getAttribute('data-target'), 10);
+        const duration = parseInt(counter.getAttribute('data-duration'), 10) || 2000;
+        const startTime = performance.now();
+        
+        const updateNumber = (currentTime) => {
+          const elapsedTime = currentTime - startTime;
+          if (elapsedTime < duration) {
+            const progress = elapsedTime / duration;
+            // EaseOutQuad formula for clean deceleration feel
+            const easeProgress = progress * (2 - progress); 
+            counter.innerText = Math.floor(easeProgress * target);
+            requestAnimationFrame(updateNumber);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        
+        requestAnimationFrame(updateNumber);
+      };
+
+      // Ensure animation triggers only when visible on viewport
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      counters.forEach(counter => observer.observe(counter));
+    };
+
+    // Initialize for native customer view
+    initCounters();
+
+    // Hook into Shopify Theme Editor events to rerun code during preview changes
+    document.addEventListener('shopify:section:load', (e) => {
+      if (e.target.classList.contains('counter-section-{{ section.id }}') || e.target.querySelector('.counter-section-{{ section.id }}')) {
+        initCounters();
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Advanced Counter Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout Headers"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Performance Metrics"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading Size"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle Descriptions"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "label": "Header Alignment"
+    },
+    {
+      "type": "header",
+      "content": "Grid Configurations"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Columns on Desktop Display"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 2,
+      "max": 8,
+      "step": 0.5,
+      "default": 4.5,
+      "label": "Counter Number Size (rem Units)"
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "min": 1000,
+      "max": 4000,
+      "step": 500,
+      "default": 2000,
+      "unit": "ms",
+      "label": "Counter Animation Velocity"
+    },
+    {
+      "type": "header",
+      "content": "Theme Color Design"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color Fill",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Primary Labels Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Animated Numbers Color",
+      "default": "#334155"
+    },
+    {
+      "type": "header",
+      "content": "Mobile & Desktop Spacing (Padding)"
+    },
+    {
+      "type": "number",
+      "id": "container_width",
+      "label": "Layout Maximum Width (Pixels)",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px",
+      "label": "Desktop Margin Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px",
+      "label": "Desktop Margin Bottom"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Mobile Margin Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Mobile Margin Bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "counter",
+      "name": "Statistic Counter Grid",
+      "settings": [
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Metric Value Prefix (e.g., $ or +)"
+        },
+        {
+          "type": "number",
+          "id": "target_number",
+          "label": "Final Core Numeric Total",
+          "default": 100
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Metric Value Suffix (e.g., K, % or +)",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Statistic Heading Title",
+          "default": "Happy Customers Served"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Detailed Supporting Description text",
+          "default": "Across active verified store channels."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Counter Section",
+      "blocks": [
+        { "type": "counter", "settings": { "target_number": 15, "suffix": "K+", "label": "Community Members" } },
+        { "type": "counter", "settings": { "target_number": 99, "suffix": "%", "label": "Positive Feedback" } },
+        { "type": "counter", "settings": { "target_number": 24, "suffix": "/7", "label": "Customer Support Response" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

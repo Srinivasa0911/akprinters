@@ -1,0 +1,595 @@
+{%- style -%}
+  .counter-section-{{ section.id }} {
+    position: relative;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    {%- if section.settings.bg_image != blank -%}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+      {%- if section.settings.enable_parallax -%}
+        background-attachment: fixed;
+      {%- endif -%}
+    {%- endif -%}
+  }
+
+  /* Background Overlay Overlay */
+  {%- if section.settings.bg_image != blank or section.settings.overlay_opacity > 0 -%}
+  .counter-section-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ section.settings.bg_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    z-index: 1;
+  }
+  {%- endif -%}
+
+  @media screen and (min-width: 750px) {
+    .counter-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .adv-counter__container {
+    position: relative;
+    z-index: 2;
+    max-width: {{ section.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .adv-counter__header {
+    text-align: {{ section.settings.heading_alignment }};
+    margin-bottom: 4rem;
+  }
+
+  /* Main Heading Typography */
+  .adv-counter__header h2 {
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1rem;
+  }
+  
+  /* Custom extra-large sizing for mobile & desktop */
+  .adv-counter__header h2.extra-large { font-size: 3.6rem; line-height: 1.1; }
+  .adv-counter__header h2.extra-extra-large { font-size: 4.4rem; line-height: 1.1; }
+  
+  @media screen and (min-width: 750px) {
+    .adv-counter__header h2.extra-large { font-size: 5.2rem; }
+    .adv-counter__header h2.extra-extra-large { font-size: 6.4rem; }
+  }
+
+  .adv-counter__grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-counter__grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+    }
+  }
+
+  /* Enhanced Card & Hover Styles */
+  .adv-counter__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    background-color: {{ section.settings.card_bg_color }};
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    {%- if section.settings.card_bg_color != 'transparent' and section.settings.card_bg_color != 'rgba(0,0,0,0)' -%}
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    {%- endif -%}
+  }
+
+  .adv-counter__item:hover {
+    transform: translateY(-8px);
+    {%- if section.settings.card_bg_color != 'transparent' and section.settings.card_bg_color != 'rgba(0,0,0,0)' -%}
+      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.1);
+    {%- endif -%}
+  }
+
+  .adv-counter__icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .adv-counter__icon img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  .adv-counter__item:hover .adv-counter__icon img {
+    transform: scale(1.1);
+  }
+
+  /* Block Content Typography controls mapped directly from settings */
+  .adv-counter__number-wrapper {
+    font-size: {{ section.settings.number_size }}px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .adv-counter__label {
+    font-size: {{ section.settings.label_size }}px;
+    color: {{ section.settings.label_color }};
+    font-weight: 600;
+    margin: 0 0 0.8rem 0;
+    line-height: 1.3;
+  }
+
+  .adv-counter__subtext {
+    font-size: {{ section.settings.subtext_size }}px;
+    color: {{ section.settings.subtext_color }};
+    opacity: 0.85;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* CTA Button Styles */
+  .adv-counter__actions {
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .adv-counter__btn {
+    display: inline-block;
+    padding: 1.4rem 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-radius: 6px;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .adv-counter__btn:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+{%- endstyle -%}
+
+<div class="counter-section-{{ section.id }} adv-counter">
+  <div class="adv-counter__container">
+    
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="adv-counter__header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="{{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <div class="adv-counter__subtitle">{{ section.settings.subtitle }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="adv-counter__grid">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'counter' -%}
+            <div class="adv-counter__item" {{ block.shopify_attributes }}>
+              
+              {%- if block.settings.icon != blank -%}
+                <div class="adv-counter__icon" style="width: {{ block.settings.icon_width }}px;">
+                  {{ block.settings.icon | image_url: width: block.settings.icon_width | image_tag: loading: 'lazy', alt: block.settings.icon.alt | escape }}
+                </div>
+              {%- endif -%}
+
+              <div class="adv-counter__number-wrapper">
+                {%- if block.settings.prefix != blank -%}
+                  <span class="adv-counter__prefix">{{ block.settings.prefix }}</span>
+                {%- endif -%}
+                
+                <span class="adv-counter__number" 
+                      data-target="{{ block.settings.target_number }}" 
+                      data-duration="{{ section.settings.animation_duration }}">0</span>
+                
+                {%- if block.settings.suffix != blank -%}
+                  <span class="adv-counter__suffix">{{ block.settings.suffix }}</span>
+                {%- endif -%}
+              </div>
+              
+              {%- if block.settings.label != blank -%}
+                <h3 class="adv-counter__label">{{ block.settings.label | escape }}</h3>
+              {%- endif -%}
+              
+              {%- if block.settings.subtext != blank -%}
+                <p class="adv-counter__subtext">{{ block.settings.subtext | escape }}</p>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.btn_label != blank and section.settings.btn_link != blank -%}
+      <div class="adv-counter__actions">
+        <a href="{{ section.settings.btn_link }}" class="adv-counter__btn">
+          {{ section.settings.btn_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const initCounters = () => {
+      const counters = document.querySelectorAll('.counter-section-{{ section.id }} .adv-counter__number');
+      
+      const animateCounter = (counter) => {
+        const target = parseInt(counter.getAttribute('data-target'), 10);
+        const duration = parseInt(counter.getAttribute('data-duration'), 10) || 2000;
+        const startTime = performance.now();
+        
+        const updateNumber = (currentTime) => {
+          const elapsedTime = currentTime - startTime;
+          if (elapsedTime < duration) {
+            const progress = elapsedTime / duration;
+            const easeProgress = progress * (2 - progress); 
+            counter.innerText = Math.floor(easeProgress * target);
+            requestAnimationFrame(updateNumber);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        
+        requestAnimationFrame(updateNumber);
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      counters.forEach(counter => observer.observe(counter));
+    };
+
+    initCounters();
+
+    document.addEventListener('shopify:section:load', (e) => {
+      if (e.target.classList.contains('counter-section-{{ section.id }}') || e.target.querySelector('.counter-section-{{ section.id }}')) {
+        initCounters();
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Advanced Counter Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout Headers"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Performance Metrics"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" },
+        { "value": "extra-large", "label": "Extra Large" },
+        { "value": "extra-extra-large", "label": "Extra Extra Large" }
+      ],
+      "default": "h1",
+      "label": "Heading Size"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle Descriptions"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "label": "Header Alignment"
+    },
+    {
+      "type": "header",
+      "content": "Grid Configurations"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Columns on Desktop Display"
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "min": 1000,
+      "max": 4000,
+      "step": 500,
+      "default": 2000,
+      "unit": "ms",
+      "label": "Counter Animation Velocity"
+    },
+    {
+      "type": "header",
+      "content": "Call To Action Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "info": "Leave blank to hide the button."
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Theme Color & Design"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#f8fafc"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Counter Card Background",
+      "default": "#ffffff",
+      "info": "Set to transparent if you do not want individual cards."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Main Heading & Subtitle Text",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Animated Numbers & Button Color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Statistic Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Detailed Description Color",
+      "default": "#64748b"
+    },
+    {
+      "type": "header",
+      "content": "Counter Typography Sizing"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 24,
+      "max": 100,
+      "step": 2,
+      "default": 48,
+      "unit": "px",
+      "label": "Animated Number Size"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 18,
+      "unit": "px",
+      "label": "Statistic Heading Title Size"
+    },
+    {
+      "type": "range",
+      "id": "subtext_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "default": 14,
+      "unit": "px",
+      "label": "Supporting Description Size"
+    },
+    {
+      "type": "header",
+      "content": "Background Image Options"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Optional. Will override the Background Color Fill."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable Parallax scrolling effect",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "%",
+      "label": "Background Overlay Opacity",
+      "info": "Uses the Section Background color to tint the image."
+    },
+    {
+      "type": "header",
+      "content": "Mobile & Desktop Spacing"
+    },
+    {
+      "type": "number",
+      "id": "container_width",
+      "label": "Layout Maximum Width (Pixels)",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px",
+      "label": "Desktop Margin Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px",
+      "label": "Desktop Margin Bottom"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Mobile Margin Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Mobile Margin Bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "counter",
+      "name": "Statistic Counter Grid",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Custom Icon Image",
+          "info": "Upload an SVG or PNG with a transparent background."
+        },
+        {
+          "type": "range",
+          "id": "icon_width",
+          "min": 20,
+          "max": 120,
+          "step": 5,
+          "default": 45,
+          "unit": "px",
+          "label": "Icon Width"
+        },
+        {
+          "type": "header",
+          "content": "Counter Settings"
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Metric Value Prefix (e.g., $ or +)"
+        },
+        {
+          "type": "number",
+          "id": "target_number",
+          "label": "Final Core Numeric Total",
+          "default": 100
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Metric Value Suffix (e.g., K, % or +)",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Statistic Heading Title",
+          "default": "Happy Customers Served"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Detailed Supporting Description text",
+          "default": "Across active verified store channels."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Counter Section",
+      "blocks": [
+        { "type": "counter", "settings": { "target_number": 15, "suffix": "K+", "label": "Community Members" } },
+        { "type": "counter", "settings": { "target_number": 99, "suffix": "%", "label": "Positive Feedback" } },
+        { "type": "counter", "settings": { "target_number": 24, "suffix": "/7", "label": "Customer Support Response" } },
+        { "type": "counter", "settings": { "target_number": 50, "suffix": "M+", "label": "Products Delivered" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

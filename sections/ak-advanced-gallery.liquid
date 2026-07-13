@@ -1,0 +1,549 @@
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  /* Typography Styles */
+  .section-{{ section.id }} .ak-gallery-header {
+    text-align: {{ section.settings.text_alignment }};
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+  }
+
+  .section-{{ section.id }} h2.ak-gallery-title {
+    color: {{ section.settings.heading_color }} !important;
+    font-size: {{ section.settings.heading_size_mobile }}px !important;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .section-{{ section.id }} p.ak-gallery-desc {
+    color: {{ section.settings.text_color }} !important;
+    font-size: {{ section.settings.text_size_mobile }}px !important;
+    margin: 0 auto;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }} h2.ak-gallery-title {
+      font-size: {{ section.settings.heading_size_desktop }}px !important;
+    }
+    .section-{{ section.id }} p.ak-gallery-desc {
+      font-size: {{ section.settings.text_size_desktop }}px !important;
+    }
+  }
+
+  /* Gallery Container */
+  .section-{{ section.id }} .ak-gallery-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .ak-gallery-item {
+    position: relative;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    display: block;
+  }
+  
+  .ak-gallery-item img, 
+  .ak-gallery-item svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .ak-gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Lightbox Specific Styles */
+  .ak-lightbox-trigger {
+    cursor: zoom-in;
+  }
+  
+  .ak-lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    padding-top: 5vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .ak-lightbox-modal.is-open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+  }
+
+  .ak-lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  }
+
+  .ak-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 45px;
+    font-weight: 300;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 9999999;
+    line-height: 1;
+  }
+
+  .ak-lightbox-close:hover,
+  .ak-lightbox-close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  /* 1. Standard Grid Layout */
+  .layout-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    gap: {{ section.settings.gap_mobile }}px;
+  }
+  .layout-grid .ak-gallery-item {
+    aspect-ratio: {{ section.settings.image_ratio }};
+  }
+
+  /* 2. Masonry Layout */
+  .layout-masonry {
+    column-count: {{ section.settings.columns_mobile }};
+    column-gap: {{ section.settings.gap_mobile }}px;
+  }
+  .layout-masonry .ak-gallery-item {
+    margin-bottom: {{ section.settings.gap_mobile }}px;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+  }
+  .layout-masonry .ak-gallery-item img {
+    height: auto;
+  }
+
+  /* 3. Horizontal Scroll Layout */
+  .layout-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: {{ section.settings.gap_mobile }}px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1.5rem;
+    scrollbar-width: thin;
+  }
+  .layout-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .layout-scroll::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  .layout-scroll .ak-gallery-item {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    aspect-ratio: {{ section.settings.image_ratio }};
+  }
+
+  /* Desktop Layout Adjustments */
+  @media screen and (min-width: 750px) {
+    .layout-grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: {{ section.settings.gap_desktop }}px;
+    }
+    
+    .layout-masonry {
+      column-count: {{ section.settings.columns_desktop }};
+      column-gap: {{ section.settings.gap_desktop }}px;
+    }
+    .layout-masonry .ak-gallery-item {
+      margin-bottom: {{ section.settings.gap_desktop }}px;
+    }
+
+    .layout-scroll {
+      gap: {{ section.settings.gap_desktop }}px;
+    }
+    .layout-scroll .ak-gallery-item {
+      flex: 0 0 calc((100% / {{ section.settings.columns_desktop }}) - ({{ section.settings.gap_desktop }}px * ({{ section.settings.columns_desktop }} - 1) / {{ section.settings.columns_desktop }}));
+      scroll-snap-align: start;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }} ak-advanced-gallery">
+  
+  <!-- Header & Description -->
+  {%- if section.settings.title != blank or section.settings.description != blank -%}
+    <div class="ak-gallery-header">
+      {%- if section.settings.title != blank -%}
+        <h2 class="ak-gallery-title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="ak-gallery-desc">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <!-- Gallery Wrapper -->
+  <div class="ak-gallery-container layout-{{ section.settings.gallery_layout }}">
+    {%- for block in section.blocks -%}
+      
+      {%- assign high_res_image = block.settings.image | image_url: width: 2000 -%}
+      
+      <div class="ak-gallery-item" {{ block.shopify_attributes }}>
+        
+        <a href="{% if section.settings.enable_lightbox %}{{ high_res_image }}{% else %}{{ block.settings.link | default: '#' }}{% endif %}" 
+           class="{% if section.settings.enable_lightbox %}ak-lightbox-trigger{% endif %}"
+           data-highres="{{ high_res_image }}"
+           style="display:block; width:100%; height:100%;">
+
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: block.settings.image.alt | default: 'Gallery image' }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag }}
+          {%- endif -%}
+
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <!-- Lightbox Modal HTML -->
+  {%- if section.settings.enable_lightbox -%}
+    <div id="ak-lightbox-modal-{{ section.id }}" class="ak-lightbox-modal">
+      <span class="ak-lightbox-close">&times;</span>
+      <img class="ak-lightbox-content" id="ak-lightbox-img-{{ section.id }}">
+    </div>
+  {%- endif -%}
+
+</div>
+
+<!-- Lightbox JavaScript -->
+{%- if section.settings.enable_lightbox -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const section = document.querySelector(`.section-${sectionId}`);
+    
+    if (section) {
+      const modal = section.querySelector(`#ak-lightbox-modal-${sectionId}`);
+      const modalImg = section.querySelector(`#ak-lightbox-img-${sectionId}`);
+      const closeBtn = section.querySelector('.ak-lightbox-close');
+      const triggers = section.querySelectorAll('.ak-lightbox-trigger');
+      
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault(); 
+          const imgSrc = this.getAttribute('data-highres');
+          modal.style.display = 'flex';
+          
+          setTimeout(() => { 
+            modal.classList.add('is-open'); 
+          }, 10);
+          
+          modalImg.src = imgSrc;
+        });
+      });
+      
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        setTimeout(() => { 
+          modal.style.display = 'none'; 
+          modalImg.src = ''; 
+        }, 300);
+      };
+      
+      closeBtn.addEventListener('click', closeModal);
+      
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
+    }
+  });
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "AK Advanced Gallery",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Colors & Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Portfolio"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading Size (Desktop)",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "A showcase of our finest custom packaging solutions."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Description Color",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "label": "Description Size (Desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "label": "Description Size (Mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Gallery Layout"
+    },
+    {
+      "type": "select",
+      "id": "gallery_layout",
+      "label": "Layout Style",
+      "options": [
+        { "value": "grid", "label": "Standard Grid" },
+        { "value": "masonry", "label": "Masonry (Staggered)" },
+        { "value": "scroll", "label": "Horizontal Scroll (Carousel)" }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lightbox",
+      "label": "Enable Image Lightbox",
+      "info": "When enabled, clicking an image will open it in full screen.",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image Aspect Ratio",
+      "info": "Applies to Grid & Scroll layouts.",
+      "options": [
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "auto", "label": "Natural" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Image Corner Radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Columns & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Container Width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on Mobile",
+      "options": [
+        { "value": "1", "label": "1 Column" },
+        { "value": "2", "label": "2 Columns" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Image Gap (Desktop)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Image Gap (Mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Image Link (If Lightbox is OFF)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AK Advanced Gallery",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

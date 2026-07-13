@@ -1,0 +1,495 @@
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .section-{{ section.id }} .ak-portfolio-header {
+    text-align: {{ section.settings.text_alignment }};
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+  }
+
+  .section-{{ section.id }} h2.ak-portfolio-heading {
+    color: {{ section.settings.heading_color }} !important;
+    font-size: {{ section.settings.heading_size_mobile }}px !important;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .section-{{ section.id }} .ak-portfolio-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    gap: {{ section.settings.gap_mobile }}px;
+  }
+
+  /* Portfolio Item Wrapper */
+  .ak-portfolio-item {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    background-color: #f4f4f4;
+  }
+
+  /* Image Setup */
+  .ak-portfolio-item img, 
+  .ak-portfolio-item svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Unified Background Image Overlay */
+  .ak-portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: {{ section.settings.overlay_bg }};
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Static Title (On the image, at the bottom) */
+  .ak-portfolio-title {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_size_mobile }}px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0 1rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Lightbox Specific Styles */
+  .ak-lightbox-trigger {
+    cursor: zoom-in;
+  }
+  
+  .ak-lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    padding-top: 5vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .ak-lightbox-modal.is-open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+  }
+
+  .ak-lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  }
+
+  .ak-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 45px;
+    font-weight: 300;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 9999999;
+    line-height: 1;
+  }
+
+  .ak-lightbox-close:hover,
+  .ak-lightbox-close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  /* Desktop Adjustments */
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }} h2.ak-portfolio-heading {
+      font-size: {{ section.settings.heading_size_desktop }}px !important;
+    }
+    .section-{{ section.id }} .ak-portfolio-container {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: {{ section.settings.gap_desktop }}px;
+    }
+    .ak-portfolio-title {
+      font-size: {{ section.settings.title_size_desktop }}px;
+      bottom: 30px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }} ak-portfolio-grid-section">
+  
+  <!-- Section Heading -->
+  {%- if section.settings.heading != blank -%}
+    <div class="ak-portfolio-header">
+      <h2 class="ak-portfolio-heading">{{ section.settings.heading }}</h2>
+    </div>
+  {%- endif -%}
+
+  <!-- Portfolio Grid -->
+  <div class="ak-portfolio-container">
+    {%- for block in section.blocks -%}
+      
+      {%- assign high_res_image = block.settings.image | image_url: width: 2000 -%}
+      
+      <a href="{% if section.settings.enable_lightbox %}{{ high_res_image }}{% else %}{{ block.settings.link | default: '#' }}{% endif %}" 
+         class="ak-portfolio-item {% if section.settings.enable_lightbox %}ak-lightbox-trigger{% endif %}" 
+         data-highres="{{ high_res_image }}"
+         {{ block.shopify_attributes }}>
+        
+        <!-- Image -->
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: block.settings.title }}
+        {%- else -%}
+          {{ 'collection-1' | placeholder_svg_tag }}
+        {%- endif -%}
+
+        <!-- Unified Color & Opacity Overlay -->
+        <div class="ak-portfolio-overlay"></div>
+
+        <!-- Static Title On Image Bottom -->
+        {%- if block.settings.title != blank -%}
+          <h3 class="ak-portfolio-title">{{ block.settings.title }}</h3>
+        {%- endif -%}
+
+      </a>
+    {%- endfor -%}
+  </div>
+
+  <!-- Lightbox Modal HTML -->
+  {%- if section.settings.enable_lightbox -%}
+    <div id="ak-lightbox-modal-{{ section.id }}" class="ak-lightbox-modal">
+      <span class="ak-lightbox-close">&times;</span>
+      <img class="ak-lightbox-content" id="ak-lightbox-img-{{ section.id }}">
+    </div>
+  {%- endif -%}
+
+</div>
+
+<!-- Lightbox JavaScript -->
+{%- if section.settings.enable_lightbox -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const section = document.querySelector(`.section-${sectionId}`);
+    
+    if (section) {
+      const modal = section.querySelector(`#ak-lightbox-modal-${sectionId}`);
+      const modalImg = section.querySelector(`#ak-lightbox-img-${sectionId}`);
+      const closeBtn = section.querySelector('.ak-lightbox-close');
+      const triggers = section.querySelectorAll('.ak-lightbox-trigger');
+      
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault(); 
+          const imgSrc = this.getAttribute('data-highres');
+          modal.style.display = 'flex';
+          
+          setTimeout(() => { 
+            modal.classList.add('is-open'); 
+          }, 10);
+          
+          modalImg.src = imgSrc;
+        });
+      });
+      
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        setTimeout(() => { 
+          modal.style.display = 'none'; 
+          modalImg.src = ''; 
+        }, 300);
+      };
+      
+      closeBtn.addEventListener('click', closeModal);
+      
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
+    }
+  });
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "AK Portfolio Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Our Projects"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading Size (Desktop)",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Heading Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Image Overlay & Title Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lightbox",
+      "label": "Enable Image Lightbox",
+      "info": "When enabled, clicking an image will open it in full screen.",
+      "default": true
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_bg",
+      "label": "Background Image Overlay (Color & Opacity)",
+      "default": "rgba(0, 0, 0, 0.4)",
+      "info": "Use this picker to select the overlay color and adjust its transparency level."
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Title Size (Desktop)",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title Size (Mobile)",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Grid Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Container Width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Image Corner Radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on Mobile",
+      "options": [
+        { "value": "1", "label": "1 Column" },
+        { "value": "2", "label": "2 Columns" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Grid Gap (Desktop)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Grid Gap (Mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "portfolio_item",
+      "name": "Portfolio Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Grid Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Project Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link destination (If Lightbox is OFF)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AK Portfolio Grid",
+      "blocks": [
+        { "type": "portfolio_item", "settings": { "title": "Premium Rigid Boxes" } },
+        { "type": "portfolio_item", "settings": { "title": "Cosmetic Packaging" } },
+        { "type": "portfolio_item", "settings": { "title": "Wedding Hampers" } },
+        { "type": "portfolio_item", "settings": { "title": "Corporate Kits" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

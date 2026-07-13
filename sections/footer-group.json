@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "logo_DbqHJg": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "description": "<p>Providing the best products for our customers worldwide.</p>",
+            "social_icon_width": 24,
+            "social_link_1": "",
+            "social_link_2": "",
+            "social_link_3": "",
+            "social_link_4": "",
+            "social_link_5": "",
+            "social_link_6": ""
+          }
+        },
+        "email_Q6LHm3": {
+          "type": "email",
+          "settings": {
+            "heading": "Email Us",
+            "show_icon": true,
+            "email_address": "support@yourstore.com"
+          }
+        },
+        "phone_4rBRCe": {
+          "type": "phone",
+          "settings": {
+            "heading": "Call Us",
+            "show_icon": true,
+            "phone_number": "+1 (555) 123-4567"
+          }
+        },
+        "location_BriXqP": {
+          "type": "location",
+          "settings": {
+            "heading": "Our Location",
+            "show_icon": true,
+            "address": "<p>No.639/F, Thiruvottiyur High Road, Ajax,<br/>Chennai - 600 019. INDIA</p>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_DbqHJg",
+        "email_Q6LHm3",
+        "phone_4rBRCe",
+        "location_BriXqP"
+      ],
+      "settings": {
+        "bg_color": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#FFFFFF",
+        "link_color": "#FFFFFF",
+        "icon_color": "#FFFFFF",
+        "border_color": "#F0F0F0",
+        "heading_size": 18,
+        "text_size": 14,
+        "link_size": 14,
+        "icon_size": 16,
+        "show_payment_icons": false,
+        "payment_image_width": 50,
+        "payment_image": "shopify://shop_images/Kia_Motor.avif",
+        "privacy_text": "Privacy Policy",
+        "privacy_link": "#",
+        "terms_text": "Terms & Conditions",
+        "terms_link": "#",
+        "container_width": 1400,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

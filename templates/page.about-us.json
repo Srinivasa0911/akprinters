@@ -1,0 +1,346 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_EqKjWJ": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_TNThFa": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Us",
+            "heading_size": "h1"
+          }
+        },
+        "text_DFU3dF": {
+          "type": "text",
+          "settings": {
+            "text": "AK Printers is a premium rigid box manufacturing company based in Chennai.",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TNThFa",
+        "text_DFU3dF"
+      ],
+      "name": "About Us",
+      "settings": {
+        "image": "shopify://shop_images/about_us_banner.avif",
+        "image_overlay_opacity": 60,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_H6GBpn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MkQ8wC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Packaging that defines your Brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_TgbP3F": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At AK Printers, we specialize in high-quality, custom rigid box packaging that enhances brand value and leaves a lasting impression. With a perfect blend of design innovation, durability, and timely delivery, we ensure every box tells your brand's story.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MkQ8wC",
+        "text_TgbP3F"
+      ],
+      "name": "Packaging",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "multirow_JKyfNj": {
+      "type": "multirow",
+      "blocks": {
+        "row_hmfKPW": {
+          "type": "row",
+          "settings": {
+            "caption": "",
+            "heading": "About Us",
+            "text": "<p>At AK Printers, we specialize in crafting premium rigid box packaging solutions designed to elevate your brand and product presentation. As one of South India’s trusted packaging partners, we offer tailor-made boxes that combine functionality, durability, and luxury-perfect for everything from gifts to corporate kits.</p><p>Our extensive product lineup includes Cake Boxes, Cosmetic Boxes, Wedding Hampers, Mobile Boxes, Dry Fruit Packs, Medical Packaging, and more-each made with precision and creative craftsmanship.</p><p>Backed by 20+ years of industry experience, our dedicated team works closely with you to deliver custom designs, quick turnarounds, and uncompromised quality. Whether you need innovative packaging for retail, events, or product launches, we bring your vision to life-on time and within budget.</p><p>Trust AK Printers to create packaging that not only protects but impresses. Let us help you take your brand to the next level with rigid boxes that speak volumes.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_hmfKPW"
+      ],
+      "name": "Inner About Us",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-right",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "ak_advanced_gallery_wpRBtt": {
+      "type": "ak-advanced-gallery",
+      "blocks": {
+        "image_EpiXyz": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_8E63Ji": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_3rxQpX": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_MLtmAc": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_qzW3VJ": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_7CdGKF": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_EpiXyz",
+        "image_8E63Ji",
+        "image_3rxQpX",
+        "image_MLtmAc",
+        "image_qzW3VJ",
+        "image_7CdGKF"
+      ],
+      "name": "ISO Certified Company",
+      "settings": {
+        "bg_color": "#fdfdfd",
+        "title": "An ISO Certified Company",
+        "heading_color": "#121212",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 28,
+        "description": "A showcase of our finest custom packaging solutions.",
+        "text_color": "#555555",
+        "text_size_desktop": 16,
+        "text_size_mobile": 14,
+        "text_alignment": "center",
+        "gallery_layout": "grid",
+        "enable_lightbox": true,
+        "image_ratio": "1 / 1",
+        "border_radius": 8,
+        "max_width": 1200,
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "gap_desktop": 20,
+        "gap_mobile": 16,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "multicolumn_QTagt6": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_HkUGna": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/usp.webp",
+            "title": "OUR USP",
+            "text": "<p>Premium design, unmatched quality, and on-time delivery-packaging that makes a statement.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ixCCGP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/vision.webp",
+            "title": "OUR VISION",
+            "text": "<p>To be South India’s leading name in innovative and premium packaging.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QqiP4d": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/archery.webp",
+            "title": "OUR MISSION",
+            "text": "<p>Deliver creative, reliable, and sustainable packaging that adds value to every brand we serve.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_6L6wc6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/expertise.webp",
+            "title": "EXPERTISE",
+            "text": "<p>20+ years in rigid box manufacturing, Custom solutions for gifts, retail, medical & corporate, High-end finishes & eco-friendly options</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_HkUGna",
+        "column_ixCCGP",
+        "column_QqiP4d",
+        "column_6L6wc6"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "title": "Why Choose Us?",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "ak_advanced_gallery_kw6zqP": {
+      "type": "ak-advanced-gallery",
+      "blocks": {
+        "image_JVktwa": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_DJRBcw": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_m7ArQX": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_7mgrCr": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_y7DFaW": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_bnjjRj": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_JVktwa",
+        "image_DJRBcw",
+        "image_m7ArQX",
+        "image_7mgrCr",
+        "image_y7DFaW",
+        "image_bnjjRj"
+      ],
+      "name": "Creative Space",
+      "settings": {
+        "bg_color": "#fdfdfd",
+        "title": "Our Creative Space",
+        "heading_color": "#121212",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 28,
+        "description": "Custom Rigid Boxes that Elevate Your Brand.",
+        "text_color": "#555555",
+        "text_size_desktop": 16,
+        "text_size_mobile": 14,
+        "text_alignment": "center",
+        "gallery_layout": "masonry",
+        "enable_lightbox": true,
+        "image_ratio": "3 / 4",
+        "border_radius": 8,
+        "max_width": 1400,
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "gap_desktop": 20,
+        "gap_mobile": 16,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_EqKjWJ",
+    "rich_text_H6GBpn",
+    "multirow_JKyfNj",
+    "ak_advanced_gallery_wpRBtt",
+    "multicolumn_QTagt6",
+    "ak_advanced_gallery_kw6zqP"
+  ]
+}

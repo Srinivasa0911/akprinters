@@ -1,0 +1,374 @@
+{%- style -%}
+  .advanced-footer-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    border-top: 1px solid {{ section.settings.border_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .advanced-footer-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .adv-footer__container {
+    max-width: {{ section.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* 4-Column Grid System */
+  .adv-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .adv-footer__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4rem;
+    }
+  }
+
+  .adv-footer__block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .adv-footer__heading {
+    color: {{ section.settings.heading_color }};
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Logo Block Styles */
+  .adv-footer__logo-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  .adv-footer__logo-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .adv-footer__logo-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  /* Contact Block Styles */
+  .adv-footer__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+  
+  .adv-footer__contact-icon {
+    width: 20px;
+    height: 20px;
+    fill: {{ section.settings.icon_color }};
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .adv-footer__contact-link {
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .adv-footer__contact-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+
+  /* Bottom Copyright Bar */
+  .adv-footer__bottom {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid {{ section.settings.border_color }};
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+{%- endstyle -%}
+
+<footer class="advanced-footer-{{ section.id }}">
+  <div class="adv-footer__container">
+    
+    <div class="adv-footer__grid">
+      {%- for block in section.blocks -%}
+        <div class="adv-footer__block" {{ block.shopify_attributes }}>
+          
+          {%- case block.type -%}
+            
+            {%- when 'logo' -%}
+              {%- if block.settings.logo != blank -%}
+                <a href="{{ routes.root_url }}" class="adv-footer__logo-link" style="width: {{ block.settings.logo_width }}px;">
+                  {{ block.settings.logo | image_url: width: block.settings.logo_width | image_tag: class: 'adv-footer__logo-img', loading: 'lazy', alt: shop.name }}
+                </a>
+              {%- else -%}
+                <h2 class="adv-footer__heading">{{ shop.name }}</h2>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <div class="adv-footer__logo-text">{{ block.settings.description }}</div>
+              {%- endif -%}
+
+            {%- when 'location' -%}
+              {%- if block.settings.heading != blank -%}
+                <h3 class="adv-footer__heading">{{ block.settings.heading | escape }}</h3>
+              {%- endif -%}
+              <div class="adv-footer__contact-item">
+                {%- if block.settings.show_icon -%}
+                  <svg class="adv-footer__contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                {%- endif -%}
+                <div>{{ block.settings.address }}</div>
+              </div>
+
+            {%- when 'phone' -%}
+              {%- if block.settings.heading != blank -%}
+                <h3 class="adv-footer__heading">{{ block.settings.heading | escape }}</h3>
+              {%- endif -%}
+              <div class="adv-footer__contact-item">
+                {%- if block.settings.show_icon -%}
+                  <svg class="adv-footer__contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                {%- endif -%}
+                <a href="tel:{{ block.settings.phone_number | replace: ' ', '' }}" class="adv-footer__contact-link">
+                  {{ block.settings.phone_number | escape }}
+                </a>
+              </div>
+
+            {%- when 'email' -%}
+              {%- if block.settings.heading != blank -%}
+                <h3 class="adv-footer__heading">{{ block.settings.heading | escape }}</h3>
+              {%- endif -%}
+              <div class="adv-footer__contact-item">
+                {%- if block.settings.show_icon -%}
+                  <svg class="adv-footer__contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                {%- endif -%}
+                <a href="mailto:{{ block.settings.email_address }}" class="adv-footer__contact-link">
+                  {{ block.settings.email_address | escape }}
+                </a>
+              </div>
+
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="adv-footer__bottom">
+      &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Advanced Footer",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#60a5fa"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Line Color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "header",
+      "content": "Layout Spacing"
+    },
+    {
+      "type": "number",
+      "id": "container_width",
+      "label": "Maximum Width (px)",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0, "max": 100, "step": 4,
+      "default": 64, "unit": "px",
+      "label": "Desktop Top Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0, "max": 100, "step": 4,
+      "default": 64, "unit": "px",
+      "label": "Desktop Bottom Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0, "max": 100, "step": 4,
+      "default": 40, "unit": "px",
+      "label": "Mobile Top Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0, "max": 100, "step": 4,
+      "default": 40, "unit": "px",
+      "label": "Mobile Bottom Padding"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Store Logo & Info",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Footer Logo"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 50, "max": 250, "step": 10,
+          "default": 120, "unit": "px",
+          "label": "Logo Width"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Store Description",
+          "default": "<p>Providing the best products for our customers worldwide.</p>"
+        }
+      ]
+    },
+    {
+      "type": "location",
+      "name": "Location Column",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Column Heading",
+          "default": "Our Location"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_icon",
+          "label": "Show Location Icon",
+          "default": true
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "label": "Address Details",
+          "default": "<p>123 Commerce Blvd<br>Suite 100<br>New York, NY 10001</p>"
+        }
+      ]
+    },
+    {
+      "type": "phone",
+      "name": "Phone Column",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Column Heading",
+          "default": "Call Us"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_icon",
+          "label": "Show Phone Icon",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "phone_number",
+          "label": "Phone Number",
+          "default": "+1 (555) 123-4567"
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email Column",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Column Heading",
+          "default": "Email Us"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_icon",
+          "label": "Show Email Icon",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "email_address",
+          "label": "Email Address",
+          "default": "support@yourstore.com"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Footer",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "location" },
+        { "type": "phone" },
+        { "type": "email" }
+      ]
+    }
+  ]
+}
+{% endschema %}

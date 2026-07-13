@@ -1,0 +1,447 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_animated_slider_7Nz8gX": {
+      "type": "custom-animated-slider",
+      "blocks": {
+        "slide_e6c8H9": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/explore_premium_rigid_box_solutions_for_your_brand_packaging.webp",
+            "title": "Slide Title",
+            "title_color": "#ffffff",
+            "description": "Add your description here",
+            "description_color": "#ffffff",
+            "show_first_button": true,
+            "first_button_text": "SEE MORE",
+            "first_button_link": "",
+            "show_second_button": true,
+            "second_button_text": "SUBSCRIBE",
+            "second_button_link": ""
+          }
+        },
+        "slide_JXpnzz": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/explore_premium_rigid_box_solutions_for_your_brand_packaging.webp",
+            "title": "Slide Title",
+            "title_color": "#ffffff",
+            "description": "Add your description here",
+            "description_color": "#ffffff",
+            "show_first_button": true,
+            "first_button_text": "SEE MORE",
+            "first_button_link": "",
+            "show_second_button": true,
+            "second_button_text": "SUBSCRIBE",
+            "second_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_e6c8H9",
+        "slide_JXpnzz"
+      ],
+      "name": "Image Content Slider",
+      "settings": {
+        "autoplay_speed": 7,
+        "transition_speed": 3
+      }
+    },
+    "ak_image_banner_h9KVKE": {
+      "type": "ak-image-banner",
+      "blocks": {
+        "text_tWzdcc": {
+          "type": "text",
+          "settings": {
+            "text": "Where Packaging Meets Perfection",
+            "text_style": "subtitle"
+          }
+        },
+        "heading_VRRmxr": {
+          "type": "heading",
+          "settings": {
+            "heading": "Crafting Custom Prints",
+            "heading_line_2": "That Speak Your Brand’s",
+            "heading_line_3": "Language",
+            "heading_line_1_color": "#ffffff",
+            "heading_line_2_color": "#f9b22e",
+            "heading_line_3_color": "#ffffff",
+            "heading_size": "h0"
+          }
+        },
+        "buttons_6DLtbA": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "#",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_tWzdcc",
+        "heading_VRRmxr",
+        "buttons_6DLtbA"
+      ],
+      "disabled": true,
+      "name": "AK Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/ak_printers_rigid_box_manufacturers.webp",
+        "image_2": "shopify://shop_images/ak_printers_draw_boxes.webp",
+        "image_overlay_opacity": 70,
+        "image_height": "large",
+        "image_behavior": "ambient",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-5",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "ak_slideshow_jc6E6w": {
+      "type": "ak-slideshow",
+      "blocks": {
+        "slide_HVP4Fh": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Main_Banner.avif",
+            "image_overlay_opacity": 70,
+            "custom_text": "Where Packaging Meets Perfection",
+            "custom_text_font_size": 18,
+            "heading": "Crafting Custom Prints",
+            "heading_line_2": "That Speak Your Brand’s",
+            "heading_line_3": "Language",
+            "heading_line_1_color": "#ffffff",
+            "heading_line_2_color": "#f9b22e",
+            "heading_line_3_color": "#ffffff",
+            "heading_size": "h0",
+            "subheading": "",
+            "button_label": "Explore Now",
+            "link": "#",
+            "button_style_secondary": true,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-5"
+          }
+        },
+        "slide_QqP8DD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/about_us_banner.webp",
+            "image_overlay_opacity": 70,
+            "custom_text": "Where Packaging Meets Perfection",
+            "custom_text_font_size": 18,
+            "heading": "Crafting Custom Prints",
+            "heading_line_2": "That Speak Your Brand’s",
+            "heading_line_3": "Language",
+            "heading_line_1_color": "#ffffff",
+            "heading_line_2_color": "#f9b22e",
+            "heading_line_3_color": "#ffffff",
+            "heading_size": "h0",
+            "subheading": "",
+            "button_label": "Explore Now",
+            "link": "#",
+            "button_style_secondary": true,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-5"
+          }
+        }
+      },
+      "block_order": [
+        "slide_HVP4Fh",
+        "slide_QqP8DD"
+      ],
+      "disabled": true,
+      "name": "AK Slideshow",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "ambient",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "image_with_text_he3pfR": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_CdbRVe": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Us",
+            "heading_size": "h2"
+          }
+        },
+        "text_iNXqKk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At AK Printers, we specialize in high-quality custom rigid boxes that reflect your brand identity. Committed to innovation, excellence, and customer satisfaction, we work closely with you to deliver tailored packaging solutions-on time and within budget. We also prioritize sustainability, offering eco-friendly printing options without compromising on quality. Whether you need a small batch or large production run, trust AK Printers to deliver exceptional results.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_Y6tA7a": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More",
+            "button_link": "#",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_CdbRVe",
+        "text_iNXqKk",
+        "button_Y6tA7a"
+      ],
+      "name": "About Us",
+      "settings": {
+        "image": "shopify://shop_images/achievements.avif",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-4",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured Products",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "logo_slider_ak_iAPpKC": {
+      "type": "logo-slider-ak",
+      "blocks": {
+        "logo_iER9T6": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/anadha_bhavan.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        },
+        "logo_ADg4bq": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Prime_Book.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        },
+        "logo_9BQLPD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/equitas.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        },
+        "logo_kEz7Lt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Hidesign.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        },
+        "logo_AkWqNQ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/happyherbs.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        },
+        "logo_hUanf6": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Urban.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        },
+        "logo_jxRGjf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Shree_Mithai.avif",
+            "link": "",
+            "alt_text": "Brand Logo"
+          }
+        }
+      },
+      "block_order": [
+        "logo_iER9T6",
+        "logo_ADg4bq",
+        "logo_9BQLPD",
+        "logo_kEz7Lt",
+        "logo_AkWqNQ",
+        "logo_hUanf6",
+        "logo_jxRGjf"
+      ],
+      "name": "AK Logo Carousel",
+      "settings": {
+        "heading": "Trusted by Leading Brands",
+        "bg_color": "#f3efe9",
+        "heading_color": "#5e7783",
+        "logo_width": 140,
+        "logo_gap": 10,
+        "static_style": "grayscale",
+        "static_opacity": 60,
+        "hover_style": "color",
+        "show_separators": false,
+        "separator_color": "#c1c1c1",
+        "scroll_speed": 25,
+        "pause_on_hover": true,
+        "show_arrows": false,
+        "arrow_color": "#000000",
+        "arrow_bg_color": "#ffffff",
+        "arrow_border_color": "#dddddd",
+        "show_dots": false,
+        "dot_color": "#cccccc",
+        "active_dot_color": "#000000",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "counter_section_ak_wbgcep": {
+      "type": "counter-section-ak",
+      "blocks": {
+        "counter_J4QmFY": {
+          "type": "counter",
+          "settings": {
+            "icon_width": 45,
+            "prefix": "",
+            "target_number": 100,
+            "suffix": "+",
+            "label": "Happy Customers Served",
+            "subtext": "Across active verified store channels."
+          }
+        },
+        "counter_jUHqYG": {
+          "type": "counter",
+          "settings": {
+            "icon_width": 45,
+            "prefix": "",
+            "target_number": 15,
+            "suffix": "K+",
+            "label": "Community Members",
+            "subtext": "Across active verified store channels."
+          }
+        },
+        "counter_cHFehn": {
+          "type": "counter",
+          "settings": {
+            "icon_width": 45,
+            "prefix": "",
+            "target_number": 99,
+            "suffix": "%",
+            "label": "Positive Feedback",
+            "subtext": "Across active verified store channels."
+          }
+        },
+        "counter_Hr6hUG": {
+          "type": "counter",
+          "settings": {
+            "icon_width": 45,
+            "prefix": "",
+            "target_number": 24,
+            "suffix": "/7",
+            "label": "Customer Support Response",
+            "subtext": "Across active verified store channels."
+          }
+        }
+      },
+      "block_order": [
+        "counter_J4QmFY",
+        "counter_jUHqYG",
+        "counter_cHFehn",
+        "counter_Hr6hUG"
+      ],
+      "name": "Advanced Counter Stats",
+      "settings": {
+        "title": "Our Performance Metrics",
+        "heading_size": "h1",
+        "subtitle": "",
+        "heading_alignment": "center",
+        "columns_desktop": 4,
+        "animation_duration": 2000,
+        "btn_label": "",
+        "btn_link": "",
+        "bg_color": "#f7f7f7",
+        "card_bg_color": "#ffffff",
+        "text_color": "#121212",
+        "accent_color": "#334155",
+        "label_color": "#121212",
+        "subtext_color": "#64748b",
+        "number_size": 36,
+        "label_size": 18,
+        "subtext_size": 14,
+        "enable_parallax": false,
+        "overlay_opacity": 0,
+        "container_width": 1400,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "custom_animated_slider_7Nz8gX",
+    "ak_image_banner_h9KVKE",
+    "ak_slideshow_jc6E6w",
+    "image_with_text_he3pfR",
+    "featured_collection",
+    "logo_slider_ak_iAPpKC",
+    "counter_section_ak_wbgcep"
+  ]
+}
