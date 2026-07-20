@@ -10,6 +10,66 @@
 {
   "name": "t:sections.footer.name",
   "type": "footer",
-  "sections": {},
-  "order": []
+  "sections": {
+    "ak_custom_footer_eJ84Lq": {
+      "type": "ak-custom-footer",
+      "blocks": {
+        "logo_mcqtCL": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/ak_printers_logo-Black_Text.png",
+            "logo_width": 120,
+            "description": "<p>Providing the best products for our customers worldwide.</p>"
+          }
+        },
+        "phone_nYjR7n": {
+          "type": "phone",
+          "settings": {
+            "heading": "Call Us",
+            "show_icon": true,
+            "phone_number": "+1 (555) 123-4567"
+          }
+        },
+        "email_7tqcw7": {
+          "type": "email",
+          "settings": {
+            "heading": "Email Us",
+            "show_icon": true,
+            "email_address": "support@yourstore.com"
+          }
+        },
+        "location_Fcxeb3": {
+          "type": "location",
+          "settings": {
+            "heading": "Our Location",
+            "show_icon": true,
+            "address": "<p>123 Commerce Blvd<br>Suite 100<br>New York, NY 10001</p>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_mcqtCL",
+        "phone_nYjR7n",
+        "email_7tqcw7",
+        "location_Fcxeb3"
+      ],
+      "name": "AK Footer ",
+      "settings": {
+        "bg_color": "#F0F8FF",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "icon_color": "#000000",
+        "border_color": "#D3D3D3",
+        "legal_menu": "footer",
+        "container_width": 1200,
+        "padding_top_desktop": 64,
+        "padding_bottom_desktop": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "ak_custom_footer_eJ84Lq"
+  ]
 }
