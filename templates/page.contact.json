@@ -119,14 +119,92 @@
         "padding_bottom": 80
       }
     },
-    "form": {
-      "type": "contact-form",
+    "custom_form_hWrXTt": {
+      "type": "custom-form",
+      "blocks": {
+        "textfield_qY3JwE": {
+          "type": "textfield",
+          "settings": {
+            "title": "Name",
+            "placeholder": "",
+            "required": true,
+            "width": "half"
+          }
+        },
+        "email_CRk6tj": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "placeholder": "",
+            "width": "half"
+          }
+        },
+        "textfield_fJeD9J": {
+          "type": "textfield",
+          "settings": {
+            "title": "Company Name",
+            "placeholder": "",
+            "required": false,
+            "width": "full"
+          }
+        },
+        "phone_number_4jXERE": {
+          "type": "phone_number",
+          "settings": {
+            "title": "Phone",
+            "placeholder": "",
+            "required": true,
+            "width": "half"
+          }
+        },
+        "phone_number_MpM9ce": {
+          "type": "phone_number",
+          "settings": {
+            "title": "Whatsapp",
+            "placeholder": "",
+            "required": true,
+            "width": "half"
+          }
+        },
+        "textarea_MzhML8": {
+          "type": "textarea",
+          "settings": {
+            "title": "What types of rigid boxes you are looking for ?",
+            "placeholder": "",
+            "required": true,
+            "width": "full"
+          }
+        }
+      },
+      "block_order": [
+        "textfield_qY3JwE",
+        "email_CRk6tj",
+        "textfield_fJeD9J",
+        "phone_number_4jXERE",
+        "phone_number_MpM9ce",
+        "textarea_MzhML8"
+      ],
+      "name": "Custom Contact Form",
       "settings": {
-        "heading": "Contact Us",
-        "heading_size": "h1",
-        "color_scheme": "scheme-2",
-        "padding_top": 80,
-        "padding_bottom": 80
+        "form_position": "left",
+        "heading": "Get in Touch",
+        "text": "<p>At AK Printers, we specialize in high-quality, custom rigid box packaging that enhances brand value and leaves a lasting impression. With a perfect blend of design innovation, durability, and timely delivery, we ensure every box tells your brand's story.</p>",
+        "text_position": "left center",
+        "text_size": 100,
+        "text_color": "#333333",
+        "button_label_color": "#FFFFFF",
+        "button_background_color": "#000000",
+        "background_color": "",
+        "button_radius": 0,
+        "base_width": 100,
+        "max_width": "1400",
+        "inner_padding": 40,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "system_ui_n4",
+        "main_font": "system_ui_n4"
       }
     }
   },
@@ -134,6 +212,6 @@
     "main",
     "image_banner_WQMKid",
     "ak_contact_page_wxGnxd",
-    "form"
+    "custom_form_hWrXTt"
   ]
 }
