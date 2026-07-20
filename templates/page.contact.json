@@ -187,8 +187,8 @@
       "name": "Custom Contact Form",
       "settings": {
         "form_position": "left",
-        "heading": "Contact Us",
-        "text": "<p>Get more details from your customers by using custom fields in your contact form with text. The more data you know about your audience, the more you can tailor the shopping experience to their liking!</p><p>If you have a retail space, this is the ideal area to add your location and store hours.</p>",
+        "heading": "Get in Touch",
+        "text": "<p>At AK Printers, we specialize in high-quality, custom rigid box packaging that enhances brand value and leaves a lasting impression. With a perfect blend of design innovation, durability, and timely delivery, we ensure every box tells your brand's story.</p>",
         "text_position": "left center",
         "text_size": 100,
         "text_color": "#333333",
