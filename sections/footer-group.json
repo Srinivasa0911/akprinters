@@ -27,7 +27,9 @@
           "settings": {
             "heading": "Call Us",
             "show_icon": true,
-            "phone_number": "+91 99414 54731"
+            "phone_number_1": "+1 (555) 123-4567",
+            "phone_number_2": "",
+            "phone_number_3": ""
           }
         },
         "email_7tqcw7": {
@@ -35,7 +37,9 @@
           "settings": {
             "heading": "Email Us",
             "show_icon": true,
-            "email_address": "akprintersch@gmail.com"
+            "email_address_1": "support@yourstore.com",
+            "email_address_2": "",
+            "email_address_3": ""
           }
         },
         "location_Fcxeb3": {
@@ -58,8 +62,10 @@
         "bg_color": "#f0f8ff",
         "heading_color": "#000000",
         "text_color": "#333333",
+        "link_hover_color": "#333333",
         "icon_color": "#000000",
         "border_color": "#d3d3d3",
+        "icon_alignment": "flex-start",
         "legal_menu": "footer",
         "container_width": 1400,
         "padding_top_desktop": 64,
