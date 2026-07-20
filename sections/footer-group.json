@@ -19,7 +19,7 @@
           "settings": {
             "logo": "shopify://shop_images/ak_printers_logo-Black_Text.png",
             "logo_width": 120,
-            "description": "<p>Providing the best products for our customers worldwide.</p>"
+            "description": "<p>At AK Printers, we specialize in high-quality custom rigid boxes that reflect your brand identity. </p>"
           }
         },
         "phone_nYjR7n": {
@@ -27,7 +27,7 @@
           "settings": {
             "heading": "Call Us",
             "show_icon": true,
-            "phone_number": "+1 (555) 123-4567"
+            "phone_number": "+91 99414 54731"
           }
         },
         "email_7tqcw7": {
@@ -35,7 +35,7 @@
           "settings": {
             "heading": "Email Us",
             "show_icon": true,
-            "email_address": "support@yourstore.com"
+            "email_address": "akprintersch@gmail.com"
           }
         },
         "location_Fcxeb3": {
@@ -43,7 +43,7 @@
           "settings": {
             "heading": "Our Location",
             "show_icon": true,
-            "address": "<p>123 Commerce Blvd<br>Suite 100<br>New York, NY 10001</p>"
+            "address": "<p><a href=\"https://maps.app.goo.gl/e991PyTzTckERHPN9\" target=\"_blank\">No.639/F, Thiruvottiyur High Road, Ajax, Chennai - 600 019. INDIA</a></p>"
           }
         }
       },
@@ -55,11 +55,11 @@
       ],
       "name": "AK Footer ",
       "settings": {
-        "bg_color": "#F0F8FF",
+        "bg_color": "#f0f8ff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "icon_color": "#000000",
-        "border_color": "#D3D3D3",
+        "border_color": "#d3d3d3",
         "legal_menu": "footer",
         "container_width": 1200,
         "padding_top_desktop": 64,
