@@ -97,8 +97,6 @@
       "disabled": true,
       "name": "AK Image Banner",
       "settings": {
-        "image": "shopify://shop_images/ak_printers_rigid_box_manufacturers.webp",
-        "image_2": "shopify://shop_images/ak_printers_draw_boxes.webp",
         "image_overlay_opacity": 70,
         "image_height": "large",
         "image_behavior": "ambient",
@@ -117,7 +115,6 @@
         "slide_HVP4Fh": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Main_Banner.avif",
             "image_overlay_opacity": 70,
             "custom_text": "Where Packaging Meets Perfection",
             "custom_text_font_size": 18,
@@ -142,7 +139,6 @@
         "slide_QqP8DD": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/about_us_banner.webp",
             "image_overlay_opacity": 70,
             "custom_text": "Where Packaging Meets Perfection",
             "custom_text_font_size": 18,
@@ -215,7 +211,6 @@
       ],
       "name": "About Us",
       "settings": {
-        "image": "shopify://shop_images/achievements.avif",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -261,71 +256,224 @@
     "logo_slider_ak_iAPpKC": {
       "type": "logo-slider-ak",
       "blocks": {
-        "logo_iER9T6": {
+        "logo_XRTdxV": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/anadha_bhavan.avif",
+            "image": "shopify://shop_images/Zoho.avif",
             "link": "",
-            "alt_text": "Brand Logo"
+            "alt_text": "Zoho"
           }
         },
-        "logo_ADg4bq": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/Prime_Book.avif",
-            "link": "",
-            "alt_text": "Brand Logo"
-          }
-        },
-        "logo_9BQLPD": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/equitas.avif",
-            "link": "",
-            "alt_text": "Brand Logo"
-          }
-        },
-        "logo_kEz7Lt": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/Hidesign.avif",
-            "link": "",
-            "alt_text": "Brand Logo"
-          }
-        },
-        "logo_AkWqNQ": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/happyherbs.avif",
-            "link": "",
-            "alt_text": "Brand Logo"
-          }
-        },
-        "logo_hUanf6": {
+        "logo_QpaC3L": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Urban.avif",
             "link": "",
-            "alt_text": "Brand Logo"
+            "alt_text": "Urban"
           }
         },
-        "logo_jxRGjf": {
+        "logo_7UVmKG": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Royal_Enfield.avif",
+            "link": "",
+            "alt_text": "Royal Enfield"
+          }
+        },
+        "logo_jptgLY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Tikitora.avif",
+            "link": "",
+            "alt_text": "tikitoro"
+          }
+        },
+        "logo_LbcVL9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Technip.avif",
+            "link": "",
+            "alt_text": "Technip"
+          }
+        },
+        "logo_qhzJMt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Subabhi.avif",
+            "link": "",
+            "alt_text": "Surabhi"
+          }
+        },
+        "logo_NXLkKX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/VBJ.avif",
+            "link": "",
+            "alt_text": "VBJ"
+          }
+        },
+        "logo_Fqif7f": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Tekion.avif",
+            "link": "",
+            "alt_text": "Tekion"
+          }
+        },
+        "logo_8maMAf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Prime_Book.avif",
+            "link": "",
+            "alt_text": "Primebook"
+          }
+        },
+        "logo_cpDKQT": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Shree_Mithai.avif",
             "link": "",
-            "alt_text": "Brand Logo"
+            "alt_text": "Shree Mithai"
+          }
+        },
+        "logo_dkGqCa": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Pattapas.avif",
+            "link": "",
+            "alt_text": "Pattapas"
+          }
+        },
+        "logo_qcHTNg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Paragidm.avif",
+            "link": "",
+            "alt_text": "Paragidm"
+          }
+        },
+        "logo_bW3hnf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Ciklum.avif",
+            "link": "",
+            "alt_text": "Ciklum"
+          }
+        },
+        "logo_4bnJGm": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Hinduja.avif",
+            "link": "",
+            "alt_text": "Hinduja"
+          }
+        },
+        "logo_gkwdwq": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Kia_Motor.avif",
+            "link": "",
+            "alt_text": "KIA Motors"
+          }
+        },
+        "logo_LKz3DJ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Kavery_Hospital.avif",
+            "link": "",
+            "alt_text": "Kauvery Hospital"
+          }
+        },
+        "logo_dJGHet": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Fortis.avif",
+            "link": "",
+            "alt_text": "Fortis"
+          }
+        },
+        "logo_dQQqej": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Hidesign.avif",
+            "link": "",
+            "alt_text": "HIDESIGN"
+          }
+        },
+        "logo_NcPn9C": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/happyherbs.avif",
+            "link": "",
+            "alt_text": "Happy Herbs"
+          }
+        },
+        "logo_CMBrKV": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Grundfos.avif",
+            "link": "",
+            "alt_text": "GRUNDFOS"
+          }
+        },
+        "logo_EqgMXz": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/CP_Plus.avif",
+            "link": "",
+            "alt_text": "CP PLUS"
+          }
+        },
+        "logo_73gnQB": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/equitas.avif",
+            "link": "",
+            "alt_text": "Equitas"
+          }
+        },
+        "logo_LjTYD9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Chennai_Mobiles.avif",
+            "link": "",
+            "alt_text": "Chennai Mobiles"
+          }
+        },
+        "logo_XHyUQb": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/anadha_bhavan.avif",
+            "link": "",
+            "alt_text": "Ananda Bhavan"
           }
         }
       },
       "block_order": [
-        "logo_iER9T6",
-        "logo_ADg4bq",
-        "logo_9BQLPD",
-        "logo_kEz7Lt",
-        "logo_AkWqNQ",
-        "logo_hUanf6",
-        "logo_jxRGjf"
+        "logo_XRTdxV",
+        "logo_QpaC3L",
+        "logo_7UVmKG",
+        "logo_jptgLY",
+        "logo_LbcVL9",
+        "logo_qhzJMt",
+        "logo_NXLkKX",
+        "logo_Fqif7f",
+        "logo_8maMAf",
+        "logo_cpDKQT",
+        "logo_dkGqCa",
+        "logo_qcHTNg",
+        "logo_bW3hnf",
+        "logo_4bnJGm",
+        "logo_gkwdwq",
+        "logo_LKz3DJ",
+        "logo_dJGHet",
+        "logo_dQQqej",
+        "logo_NcPn9C",
+        "logo_CMBrKV",
+        "logo_EqgMXz",
+        "logo_73gnQB",
+        "logo_LjTYD9",
+        "logo_XHyUQb"
       ],
       "name": "AK Logo Carousel",
       "settings": {
@@ -339,7 +487,7 @@
         "hover_style": "color",
         "show_separators": false,
         "separator_color": "#c1c1c1",
-        "scroll_speed": 25,
+        "scroll_speed": 60,
         "pause_on_hover": true,
         "show_arrows": false,
         "arrow_color": "#000000",
