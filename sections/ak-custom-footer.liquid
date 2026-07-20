@@ -4,7 +4,6 @@
     color: {{ section.settings.text_color }};
     padding-top: {{ section.settings.padding_top_mobile }}px;
     padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-    border-top: 1px solid {{ section.settings.border_color }};
   }
 
   @media screen and (min-width: 750px) {
@@ -104,9 +103,55 @@
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid {{ section.settings.border_color }};
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     font-size: 1.2rem;
+    opacity: 0.8;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .adv-footer__bottom-left {
+    text-align: center;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .adv-footer__bottom-left {
+      text-align: left;
+    }
+  }
+
+  .adv-footer__bottom-left a {
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+  }
+
+  .adv-footer__legal-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .adv-footer__legal-menu a {
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .adv-footer__legal-menu a:hover {
     opacity: 0.7;
+    text-decoration: underline;
   }
 {%- endstyle -%}
 
@@ -173,9 +218,23 @@
       {%- endfor -%}
     </div>
 
+    <!-- Bottom Copyright & Policies Bar -->
     <div class="adv-footer__bottom">
-      &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}. All Rights Reserved.
+      <div class="adv-footer__bottom-left">
+        &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}. All Rights Reserved.
+      </div>
+      
+      {%- if section.settings.legal_menu != blank -%}
+        <div class="adv-footer__bottom-right">
+          <ul class="adv-footer__legal-menu">
+            {%- for link in section.settings.legal_menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
     </div>
+
   </div>
 </footer>
 
@@ -215,8 +274,18 @@
     {
       "type": "color",
       "id": "border_color",
-      "label": "Border Line Color",
-      "default": "#1f2937"
+      "label": "Mid Gray Border Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Bar (Copyright & Legal)"
+    },
+    {
+      "type": "link_list",
+      "id": "legal_menu",
+      "label": "Legal Menu",
+      "info": "Create a menu in Shopify Admin > Navigation for your Privacy Policy and Terms & Conditions, then select it here."
     },
     {
       "type": "header",
@@ -364,9 +433,9 @@
       "name": "Advanced Footer",
       "blocks": [
         { "type": "logo" },
-        { "type": "location" },
         { "type": "phone" },
-        { "type": "email" }
+        { "type": "email" },
+        { "type": "location" }
       ]
     }
   ]
