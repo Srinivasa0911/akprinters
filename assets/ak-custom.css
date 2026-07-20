@@ -327,3 +327,8 @@ text-decoration: none;
 .adv-footer__contact-details p{
 margin:0px;
 }
+
+/** Contact Form Section */
+.wbs-pck__recaptcha-message{
+display: none;
+}
