@@ -73,8 +73,8 @@
   /* Contact Block Styles */
   .adv-footer__contact-item {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: {{ section.settings.icon_alignment }};
+    gap: 1.2rem;
     font-size: 1.4rem;
     line-height: 1.6;
   }
@@ -84,18 +84,27 @@
     height: 20px;
     fill: {{ section.settings.icon_color }};
     flex-shrink: 0;
-    margin-top: 2px;
+    {% if section.settings.icon_alignment == 'flex-start' %}
+      margin-top: 2px;
+    {% endif %}
+  }
+
+  .adv-footer__contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
   .adv-footer__contact-link {
     color: {{ section.settings.text_color }};
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
   }
   
-  .adv-footer__contact-link:hover {
-    opacity: 0.7;
-    text-decoration: underline;
+  .adv-footer__contact-link:hover,
+  .adv-footer__legal-menu a:hover,
+  .adv-footer__bottom-left a:hover {
+    color: {{ section.settings.link_hover_color }};
   }
 
   /* Bottom Copyright Bar */
@@ -131,6 +140,7 @@
   .adv-footer__bottom-left a {
     color: {{ section.settings.text_color }};
     text-decoration: none;
+    transition: color 0.3s ease;
   }
 
   .adv-footer__legal-menu {
@@ -146,12 +156,7 @@
   .adv-footer__legal-menu a {
     color: {{ section.settings.text_color }};
     text-decoration: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .adv-footer__legal-menu a:hover {
-    opacity: 0.7;
-    text-decoration: underline;
+    transition: color 0.3s ease;
   }
 {%- endstyle -%}
 
@@ -184,7 +189,9 @@
                 {%- if block.settings.show_icon -%}
                   <svg class="adv-footer__contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 {%- endif -%}
-                <div>{{ block.settings.address }}</div>
+                <div class="adv-footer__contact-details">
+                  {{ block.settings.address }}
+                </div>
               </div>
 
             {%- when 'phone' -%}
@@ -195,9 +202,17 @@
                 {%- if block.settings.show_icon -%}
                   <svg class="adv-footer__contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 {%- endif -%}
-                <a href="tel:{{ block.settings.phone_number | replace: ' ', '' }}" class="adv-footer__contact-link">
-                  {{ block.settings.phone_number | escape }}
-                </a>
+                <div class="adv-footer__contact-details">
+                  {%- if block.settings.phone_number_1 != blank -%}
+                    <a href="tel:{{ block.settings.phone_number_1 | replace: ' ', '' }}" class="adv-footer__contact-link">{{ block.settings.phone_number_1 | escape }}</a>
+                  {%- endif -%}
+                  {%- if block.settings.phone_number_2 != blank -%}
+                    <a href="tel:{{ block.settings.phone_number_2 | replace: ' ', '' }}" class="adv-footer__contact-link">{{ block.settings.phone_number_2 | escape }}</a>
+                  {%- endif -%}
+                  {%- if block.settings.phone_number_3 != blank -%}
+                    <a href="tel:{{ block.settings.phone_number_3 | replace: ' ', '' }}" class="adv-footer__contact-link">{{ block.settings.phone_number_3 | escape }}</a>
+                  {%- endif -%}
+                </div>
               </div>
 
             {%- when 'email' -%}
@@ -208,9 +223,17 @@
                 {%- if block.settings.show_icon -%}
                   <svg class="adv-footer__contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 {%- endif -%}
-                <a href="mailto:{{ block.settings.email_address }}" class="adv-footer__contact-link">
-                  {{ block.settings.email_address | escape }}
-                </a>
+                <div class="adv-footer__contact-details">
+                  {%- if block.settings.email_address_1 != blank -%}
+                    <a href="mailto:{{ block.settings.email_address_1 }}" class="adv-footer__contact-link">{{ block.settings.email_address_1 | escape }}</a>
+                  {%- endif -%}
+                  {%- if block.settings.email_address_2 != blank -%}
+                    <a href="mailto:{{ block.settings.email_address_2 }}" class="adv-footer__contact-link">{{ block.settings.email_address_2 | escape }}</a>
+                  {%- endif -%}
+                  {%- if block.settings.email_address_3 != blank -%}
+                    <a href="mailto:{{ block.settings.email_address_3 }}" class="adv-footer__contact-link">{{ block.settings.email_address_3 | escape }}</a>
+                  {%- endif -%}
+                </div>
               </div>
 
           {%- endcase -%}
@@ -267,6 +290,12 @@
     },
     {
       "type": "color",
+      "id": "link_hover_color",
+      "label": "Link Hover Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
       "id": "icon_color",
       "label": "Icon Color",
       "default": "#60a5fa"
@@ -276,6 +305,20 @@
       "id": "border_color",
       "label": "Mid Gray Border Color",
       "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Icon Settings"
+    },
+    {
+      "type": "select",
+      "id": "icon_alignment",
+      "label": "Icon Vertical Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Top Align" },
+        { "value": "center", "label": "Center Align" }
+      ],
+      "default": "flex-start"
     },
     {
       "type": "header",
@@ -396,9 +439,21 @@
         },
         {
           "type": "text",
-          "id": "phone_number",
-          "label": "Phone Number",
+          "id": "phone_number_1",
+          "label": "Phone Number 1",
           "default": "+1 (555) 123-4567"
+        },
+        {
+          "type": "text",
+          "id": "phone_number_2",
+          "label": "Phone Number 2",
+          "info": "Leave blank if not needed."
+        },
+        {
+          "type": "text",
+          "id": "phone_number_3",
+          "label": "Phone Number 3",
+          "info": "Leave blank if not needed."
         }
       ]
     },
@@ -421,16 +476,28 @@
         },
         {
           "type": "text",
-          "id": "email_address",
-          "label": "Email Address",
+          "id": "email_address_1",
+          "label": "Email Address 1",
           "default": "support@yourstore.com"
+        },
+        {
+          "type": "text",
+          "id": "email_address_2",
+          "label": "Email Address 2",
+          "info": "Leave blank if not needed."
+        },
+        {
+          "type": "text",
+          "id": "email_address_3",
+          "label": "Email Address 3",
+          "info": "Leave blank if not needed."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "AK Footer ",
+      "name": "Advanced Footer",
       "blocks": [
         { "type": "logo" },
         { "type": "phone" },
