@@ -317,3 +317,13 @@ animation:pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 div#Banner-template--22051286286595__image_banner_WQMKid p{
 color:rgba(var(--color-foreground),1)!important;
 }
+
+/** Footer Section */
+.adv-footer__contact-details a{
+color: #333 !important;
+text-decoration: none;
+}
+
+.adv-footer__contact-details p{
+margin:0px;
+}
