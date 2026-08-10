@@ -14,8 +14,6 @@
   }
 {%- endstyle -%}
 
-{%- if section.settings.image != blank -%}
-
 {%- liquid
   assign fetch_priority = 'auto'
   if section.index == 1
@@ -108,7 +106,6 @@
     </div>
   </div>
 </div>
-{%- endif -%}
 
 {% schema %}
 {
