@@ -93,7 +93,7 @@
       "name": "AK Contact Row",
       "settings": {
         "section_anchor": "",
-        "bg_color": "#F0F8FF",
+        "bg_color": "#F7F7F7",
         "heading": "Get in Touch",
         "heading_color": "#000000",
         "heading_size_desktop": 40,
@@ -194,7 +194,7 @@
         "text_color": "#333333",
         "button_label_color": "#ffffff",
         "button_background_color": "#000000",
-        "background_color": "",
+        "background_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
         "button_radius": 0,
         "base_width": 100,
         "max_width": "1400",
