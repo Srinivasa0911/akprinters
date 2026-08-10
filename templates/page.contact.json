@@ -198,7 +198,7 @@
         "button_radius": 0,
         "base_width": 100,
         "max_width": "1400",
-        "inner_padding": 40,
+        "inner_padding": 80,
         "outer_margin": 0,
         "custom_css": "",
         "mobile_custom_css": "",
