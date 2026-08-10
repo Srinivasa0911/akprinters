@@ -318,6 +318,10 @@ div#Banner-template--22051286286595__image_banner_WQMKid p{
 color:rgba(var(--color-foreground),1)!important;
 }
 
+.subtitle{
+color:rgba(var(--color-foreground),1)!important;
+}
+
 /** Footer Section */
 .adv-footer__contact-details a{
 color: #333 !important;
