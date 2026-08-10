@@ -68,8 +68,8 @@
         "icon_alignment": "flex-start",
         "legal_menu": "footer",
         "container_width": 1400,
-        "padding_top_desktop": 64,
-        "padding_bottom_desktop": 12,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 20,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
