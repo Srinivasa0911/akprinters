@@ -328,6 +328,14 @@ text-decoration: none;
 margin:0px;
 }
 
+.adv-footer__bottom{
+opacity:1;
+}
+
+.adv-footer__logo-text{
+opacity:1;
+}
+
 /** Contact Form Section */
 .wbs-pck__recaptcha-message{
 display: none;
