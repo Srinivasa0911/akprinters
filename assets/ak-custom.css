@@ -336,6 +336,15 @@ opacity: 1 !important;
 opacity: 1 !important;
 }
 
+p{
+color: #333 !important;
+opacity: 1 !important;
+}
+
+.wbs-pck__heading{
+color:#000!important;
+}
+
 /** Contact Form Section */
 .wbs-pck__recaptcha-message{
 display: none;
