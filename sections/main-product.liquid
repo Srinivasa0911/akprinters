@@ -674,8 +674,11 @@
                     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 </product-recommendations>
-              {%- when 'icon-with-text' -%}
-                {% render 'icon-with-text', block: block %}
+         {%- when 'icon-with-text' -%}
+                {%- comment -%} Hide block if both metafields are empty {%- endcomment -%}
+                {%- if product.metafields.custom.right_image != blank or product.metafields.custom.left_heading != blank -%}
+                  {% render 'icon-with-text', block: block %}
+                {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
