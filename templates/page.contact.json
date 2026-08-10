@@ -113,8 +113,8 @@
         "card_text_color": "#333333",
         "card_text_size_desktop": 14,
         "card_text_size_mobile": 14,
-        "card_link_color": "#000000",
-        "card_link_hover_color": "#000000",
+        "card_link_color": "#333333",
+        "card_link_hover_color": "#333333",
         "padding_top": 80,
         "padding_bottom": 80
       }
