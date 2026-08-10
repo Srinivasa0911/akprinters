@@ -104,7 +104,7 @@
         "description_size_mobile": 16,
         "card_bg_color": "#ffffff",
         "card_border_color": "#e2e2e2",
-        "card_border_thickness": 1,
+        "card_border_thickness": 0,
         "card_border_radius": 12,
         "icon_color": "#000000",
         "card_title_color": "#000000",
