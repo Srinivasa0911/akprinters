@@ -15,7 +15,7 @@
         "slide_e6c8H9": {
           "type": "slide",
           "settings": {
-            "slide_image": "shopify://shop_images/explore_premium_rigid_box_solutions_for_your_brand_packaging.webp",
+            "slide_image": "shopify://shop_images/young-man-in-bright-fashion_925x_b3b7ebd6-c91f-496a-a516-45403497ea25.jpg",
             "title": "Slide Title",
             "title_color": "#ffffff",
             "description": "Add your description here",
@@ -94,7 +94,6 @@
         "heading_VRRmxr",
         "buttons_6DLtbA"
       ],
-      "disabled": true,
       "name": "AK Image Banner",
       "settings": {
         "image_overlay_opacity": 70,
@@ -165,7 +164,6 @@
         "slide_HVP4Fh",
         "slide_QqP8DD"
       ],
-      "disabled": true,
       "name": "AK Slideshow",
       "settings": {
         "layout": "full_bleed",
