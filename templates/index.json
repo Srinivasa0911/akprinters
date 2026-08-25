@@ -94,6 +94,7 @@
         "heading_VRRmxr",
         "buttons_6DLtbA"
       ],
+      "disabled": true,
       "name": "AK Image Banner",
       "settings": {
         "image_overlay_opacity": 70,
@@ -164,6 +165,7 @@
         "slide_HVP4Fh",
         "slide_QqP8DD"
       ],
+      "disabled": true,
       "name": "AK Slideshow",
       "settings": {
         "layout": "full_bleed",
